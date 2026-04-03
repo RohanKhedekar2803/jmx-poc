@@ -1,6 +1,6 @@
-# 🚀 JMX + RMI POC (Heap Monitor)
+#  JMX + RMI POC (Heap Monitor)
 
-## 📌 Overview
+##  Overview
 
 This project demonstrates how to use **Java Management Extensions (JMX)** with **RMI (Remote Method Invocation)** to monitor and manage a JVM at runtime.
 
@@ -14,7 +14,7 @@ It includes:
 
 ---
 
-## 🧠 Concepts Covered
+##  Concepts Covered
 
 * JMX Architecture
 * MBeans (Standard MBeans)
@@ -25,7 +25,7 @@ It includes:
 
 ---
 
-## ⚙️ Project Structure
+##  Project Structure
 
 ```
 src/main/java/com/example/jmx/
@@ -37,9 +37,9 @@ src/main/java/com/example/jmx/
 
 ---
 
-## 🔥 Features
+##  Features
 
-### ✅ 1. Heap Monitoring
+###  1. Heap Monitoring
 
 Tracks JVM heap usage using:
 
@@ -49,14 +49,14 @@ ManagementFactory.getMemoryMXBean()
 
 ---
 
-### ✅ 2. Runtime Attributes
+###  2. Runtime Attributes
 
 * `HeapUsed` → Read-only
 * `Threshold` → Configurable at runtime
 
 ---
 
-### ✅ 3. Operations
+###  3. Operations
 
 ```java
 checkHeap()
@@ -67,7 +67,7 @@ checkHeap()
 
 ---
 
-### ✅ 4. Notifications
+###  4. Notifications
 
 * Sends alert when:
 
@@ -83,7 +83,7 @@ ALERT RECEIVED: Heap exceeded threshold: 12582912
 
 ---
 
-## 🔌 How It Works
+## How It Works
 
 ```
 Client → JMXConnectorFactory → RMI → JMX Server → MBean → Response
@@ -95,9 +95,9 @@ Client → JMXConnectorFactory → RMI → JMX Server → MBean → Response
 
 ---
 
-## 🚀 How to Run
+##  How to Run
 
-### 1️⃣ Build Project
+### 1️ Build Project
 
 ```bash
 mvn clean package
@@ -105,7 +105,7 @@ mvn clean package
 
 ---
 
-### 2️⃣ Start JMX Server
+### 2️ Start JMX Server
 
 ```bash
 java -cp target/jmx-poc-1.0-SNAPSHOT.jar com.example.jmx.JMXServer
@@ -119,7 +119,7 @@ JMX Server started on port 9999...
 
 ---
 
-### 3️⃣ Run JMX Client
+### 3️ Run JMX Client
 
 ```bash
 java -cp target/jmx-poc-1.0-SNAPSHOT.jar com.example.jmx.JMXClient
@@ -127,7 +127,7 @@ java -cp target/jmx-poc-1.0-SNAPSHOT.jar com.example.jmx.JMXClient
 
 ---
 
-### 4️⃣ Expected Output
+### 4️ Expected Output
 
 ```
 Connected to JMX Server...
@@ -137,76 +137,12 @@ checkHeap() invoked
 Listening for notifications...
 
 ALERT RECEIVED: Heap exceeded threshold: 12582912
-```
-
 ---
 
-## 🧪 Testing Notifications
-
-To force alerts:
-
-```java
-mbsc.setAttribute(name, new Attribute("Threshold", 1L));
-```
-
----
-
-## 🖥️ Optional: Use JMX UI
-
-You can connect using:
-
-* JConsole (comes with JDK)
-
-Steps:
-
-1. Run `jconsole`
-2. Connect to:
-
-```
-localhost:9999
-```
-
-3. Navigate:
-
-```
-MBeans → com.example → HeapMonitor
-```
-
----
-
-## 🧠 Key Learnings
-
-* JMX enables **runtime management of JVM**
-* MBeans expose **attributes + operations**
-* Notifications enable **event-driven monitoring**
-* JMX remote uses **RMI under the hood**
-* `MBeanServerConnection` acts as a remote proxy
-
----
-
-## ⚠️ Limitations
+##  Limitations
 
 * Uses RMI (not cloud-friendly)
 * Requires open ports
 * Java-specific
 
----
 
-## 🚀 Future Improvements
-
-* Add authentication (secure JMX)
-* Expose metrics via HTTP (modern approach)
-* Integrate with Prometheus / Grafana
-* Convert to Spring Boot Actuator
-
----
-
-## 👨‍💻 Author
-
-Rohan K
-
----
-
-## ⭐ If you found this useful
-
-Give it a star ⭐ on GitHub!
